@@ -1,131 +1,165 @@
 # RaceMaker — Roadmap
 
-**Status:** Pre-production
+**Status:** Pre-produzione  
+**Titolo definitivo:** da definire
 
-## Phase 0 — Design foundation
+> `RaceMaker` è attualmente il nome tecnico provvisorio del repository/progetto. Il concept precedente basato sulle automobili è stato sostituito da un gioco di costruzione e gioco con biglie fisiche.
 
-- [x] Create GitHub repository
-- [x] Define core game concept
-- [x] Define MVP scope
-- [x] Define mobile controls
-- [x] Define initial car approach
-- [x] Define track editor limits
-- [x] Define initial power-up architecture
-- [x] Define basic AI requirements
-- [x] Document technical direction
+## Phase 0 — Fondazione del concept
 
-## Phase 1 — First playable prototype
+- [x] Creare repository GitHub
+- [x] Definire il nuovo concept basato sulle biglie
+- [x] Abbandonare il precedente concept automobilistico
+- [x] Definire il gesto di lancio manuale
+- [x] Definire il principio "il giocatore controlla l'impulso, non il risultato"
+- [x] Definire collisioni concatenate e stato persistente delle biglie
+- [x] Definire modalità Prova / Classica / Multiplayer
+- [x] Definire modello multiplayer a turni come direzione attuale
+- [x] Definire editor modulare
+- [x] Definire elementi fisici principali
+- [x] Definire trappole e respawn
+- [x] Scartare power-up tradizionali
+- [x] Scartare eventi ambientali casuali come meccaniche di gameplay
+- [x] Definire concept di micro-missioni e monete
+- [x] Definire sviluppo incrementale del prototipo
 
-### Project setup
+## Phase 1 — Prototipo fisico fondamentale
 
-- [ ] Create Unity project
-- [ ] Configure iOS / Android targets
-- [ ] Establish project folder structure
-- [ ] Establish basic input system
-- [ ] Establish scene structure
+### Setup
 
-### Driving
+- [ ] Creare/configurare progetto Unity 6.3 LTS
+- [ ] Configurare target mobile
+- [ ] Stabilire struttura delle cartelle
+- [ ] Configurare input touch
+- [ ] Creare scena di test
 
-- [ ] Implement car movement
-- [ ] Implement acceleration
-- [ ] Implement braking / reverse
-- [ ] Implement analog steering
-- [ ] Tune arcade physics
-- [ ] Add camera follow
-- [ ] Test mobile controls
+### Biglia e lancio
 
-### Track system
+- [ ] Creare biglia fisica
+- [ ] Implementare interazione touch
+- [ ] Implementare trascinamento all'indietro
+- [ ] Collegare distanza del trascinamento alla potenza
+- [ ] Definire potenza minima/massima
+- [ ] Implementare orientamento del tiro
+- [ ] Implementare animazione/feedback del gesto di lancio
+- [ ] Testare feeling del lancio
 
-- [ ] Create modular track-piece data model
-- [ ] Implement straight
-- [ ] Implement curves
-- [ ] Implement S / chicane
-- [ ] Implement intersection / fork rules
-- [ ] Implement start / finish
-- [ ] Implement track connection logic
-- [ ] Implement basic validation
+### Fisica di base
 
-### Editor
+- [ ] Implementare pista semplice
+- [ ] Implementare sponde
+- [ ] Implementare collisioni biglia-bigia
+- [ ] Implementare collisioni biglia-ambiente
+- [ ] Implementare uscita dal tracciato
+- [ ] Implementare buchi
+- [ ] Implementare respawn
+- [ ] Implementare rampe
+- [ ] Implementare salti
+- [ ] Implementare 1–2 superfici con proprietà differenti
 
-- [ ] Build editor UI
-- [ ] Add piece selection
-- [ ] Add placement / rotation
-- [ ] Enforce 20-piece base limit
-- [ ] Add special-element slot
-- [ ] Add obstacle slot
-- [ ] Add Test button
-- [ ] Implement local save / load
+### Primo test fondamentale
 
-### Race
+- [ ] Verificare che "trascina → lancia → collisione → rimbalzo → seconda collisione" sia già divertente
+- [ ] Correggere il feeling fisico prima di aggiungere contenuti
 
-- [ ] Implement 3 AI opponents
-- [ ] Implement checkpoints / race progression
-- [ ] Implement finishing positions
-- [ ] Implement restart
+## Phase 2 — Interazioni fisiche
 
-### Power-ups
+- [ ] Implementare turbo a terra
+- [ ] Implementare molle/pulsanti
+- [ ] Implementare loop
+- [ ] Implementare bombe/TNT
+- [ ] Implementare blocchi mobili
+- [ ] Implementare pendoli
+- [ ] Testare catene di collisioni multiple
+- [ ] Verificare stabilità della simulazione fisica
 
-- [ ] Implement random pickup generator
-- [ ] Implement first offensive power-up
-- [ ] Implement first defensive power-up
-- [ ] Implement first movement power-up
-- [ ] Implement first environmental power-up
-- [ ] Implement pickup/use UI
+## Phase 3 — Editor e stato della pista
 
-## Phase 2 — MVP validation
+### Editor base
 
-- [ ] Playtest driving feel
-- [ ] Playtest editor usability
-- [ ] Tune camera and controls
-- [ ] Tune AI
-- [ ] Tune power-up frequency and strength
-- [ ] Validate track-building constraints
-- [ ] Fix major UX problems
-- [ ] Decide final MVP visual direction
+- [ ] Definire sistema di moduli e punti di connessione
+- [ ] Implementare rettilinei
+- [ ] Implementare curve
+- [ ] Implementare curve a S
+- [ ] Implementare raccordi
+- [ ] Implementare start/finish
+- [ ] Implementare placement e rotazione
+- [ ] Implementare validazione della pista
+- [ ] Implementare modalità Test
+- [ ] Implementare salvataggio/caricamento locale
 
-**Milestone:** a player can build, test and race a track and wants to build another one.
+### Editor avanzato
 
-## Phase 3 — Content expansion
+- [ ] Implementare biforcazioni
+- [ ] Implementare percorsi alternativi
+- [ ] Implementare guardrail opzionali
+- [ ] Implementare porte
+- [ ] Implementare ponti levatoi
+- [ ] Implementare ponti instabili
+- [ ] Implementare barre rotanti
 
-- [ ] Additional cars
-- [ ] Cosmetic customization
-- [ ] More environments
-- [ ] More base track pieces
-- [ ] More special elements
-- [ ] More obstacles
-- [ ] Expanded power-up roster
-- [ ] Better AI variety
-- [ ] Audio / music / effects polish
+## Phase 4 — Modalità Classica
 
-## Phase 4 — Community / UGC
+- [ ] Definire struttura della progressione
+- [ ] Implementare avversari IA
+- [ ] Implementare sistema di tiro dell'IA
+- [ ] Implementare interazione dell'IA con altre biglie
+- [ ] Implementare condizioni di gara
+- [ ] Implementare micro-missioni dinamiche
+- [ ] Implementare sistema di ricompense in monete
+- [ ] Testare moltiplicatori di catena
 
-- [ ] Online track publishing
-- [ ] Track discovery
-- [ ] Share codes
-- [ ] Likes / ratings
-- [ ] Creator profiles
-- [ ] Follow creators
-- [ ] Popular / new / hardest / fastest categories
-- [ ] Daily track
-- [ ] Community moderation tools
+## Phase 5 — Multiplayer
 
-## Phase 5 — Progression and live features
+- [ ] Definire protocollo del turno
+- [ ] Definire tempo massimo di preparazione del tiro
+- [ ] Implementare ordine fisso dei giocatori
+- [ ] Implementare risoluzione completa della traiettoria prima del turno successivo
+- [ ] Verificare sincronizzazione della fisica
+- [ ] Implementare stanze/private match
+- [ ] Implementare matchmaking
+- [ ] Definire comportamento IA per slot mancanti, se confermato
 
-- [ ] Credits system
-- [ ] Daily missions
-- [ ] Daily login bonus
-- [ ] Events
-- [ ] Unlockable creative elements
-- [ ] Cosmetic progression
-- [ ] Monetization experiments
+## Phase 6 — Condivisione e community
 
-## Phase 6 — Multiplayer
+- [ ] Pubblicazione delle piste
+- [ ] Ricerca/discovery
+- [ ] Codici di condivisione
+- [ ] Profili creatore
+- [ ] Like/rating
+- [ ] Moderazione
+- [ ] Piste del giorno
+- [ ] Eventuali categorie/community challenges
 
-- [ ] Multiplayer architecture review
-- [ ] Online race prototype
-- [ ] Matchmaking / private rooms
-- [ ] Network synchronization
-- [ ] Competitive track rules
-- [ ] Online progression / rankings
+## Phase 7 — Polish e contenuti
 
-Multiplayer remains deliberately outside the MVP until the core creation-and-racing loop is proven.
+- [ ] Definire visual style definitivo
+- [ ] Audio e musica
+- [ ] Feedback visivi delle collisioni
+- [ ] Animazioni
+- [ ] Ulteriori moduli di pista
+- [ ] Ulteriori ostacoli/trappole
+- [ ] Ottimizzazione mobile
+- [ ] Test di usabilità
+
+## Milestone principali
+
+### Milestone A — Fun Physics
+
+Una singola biglia può essere lanciata con precisione sufficiente e interagire con pista e altre biglie in modo soddisfacente.
+
+### Milestone B — Fun Track
+
+È possibile costruire una pista semplice, provarla e ottenere un'esperienza divertente senza necessità di contenuti avanzati.
+
+### Milestone C — Emergent Gameplay
+
+Collisioni concatenate e stato persistente producono situazioni tattiche interessanti.
+
+### Milestone D — Playable Game
+
+La modalità Classica con IA, missioni e ricompense è giocabile dall'inizio alla fine.
+
+### Milestone E — Community Game
+
+Le piste possono essere condivise e giocate da altri utenti.
