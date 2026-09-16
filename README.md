@@ -1,72 +1,212 @@
 # RaceMaker
 
-**A mobile arcade racing game focused on track creation, customization, power-ups and user-generated content.**
+**Titolo definitivo da definire.** Nome tecnico provvisorio del progetto.
+
+Mobile game di costruzione e gioco su piste modulari con **biglie** e fisica interattiva. Il cuore dell'esperienza è costruire una pista, scegliere traiettoria e potenza di lancio e osservare come collisioni, ostacoli e elementi della pista modificano fisicamente la situazione di gioco.
 
 ## Concept
 
-RaceMaker is a top-down / 2.5D arcade racing game built around:
+Il progetto ha abbandonato il precedente concept basato sulle automobili. La nuova identità di gioco è centrata sulle biglie:
 
-**Build → Test → Modify → Race → Share → Play others' tracks**
+**Costruisci → Prova → Mira e lancia → Osserva la fisica → Adatta la strategia → Ripeti**
 
-The track editor is the heart of the game: players create compact, chaotic and replayable circuits, then immediately race them against AI opponents.
+Il giocatore non guida direttamente la biglia dopo il lancio. Controlla principalmente **direzione e potenza dell'impulso**; il risultato viene determinato dalla fisica, dalle collisioni e dalla configurazione della pista.
 
-## MVP
+## Core gameplay
 
-The first playable prototype focuses on proving three things:
+- Biglia fisica con collisioni tra biglie e ambiente.
+- Lancio manuale tramite gesto touch: trascinamento all'indietro e rilascio.
+- La distanza del trascinamento determina la potenza, entro limiti min/max.
+- La traiettoria successiva al lancio non è controllata direttamente.
+- Collisioni multiple e concatenate, sul modello concettuale del biliardo.
+- Le conseguenze di un tiro possono coinvolgere più biglie e più elementi della pista.
+- Le biglie rimangono nella posizione in cui terminano il movimento.
+- Il turno successivo eredita quindi uno stato della pista modificato dai tiri precedenti.
 
-1. Driving feels fun and responsive on mobile.
-2. Building a track is fast and intuitive.
-3. Racing a track created by the player is genuinely fun.
+## Modalità previste
 
-### MVP scope
+### Prova
 
-- 1 playable car
-- 1 environment / visual theme
-- 1 player + 3 AI opponents
-- Manual mobile controls
-- Modular track editor
-- Maximum 20 base track pieces
-- Exactly 1 special track element per track
-- Exactly 1 obstacle per track
-- Random power-up generation pickup
-- 1 representative power-up per initial category
-- Track validation
-- Save/load custom tracks
-- Test/race created tracks
+Modalità per testare liberamente una pista senza struttura competitiva.
 
-## Design pillars
+### Classica
 
-- **Arcade first:** simple, readable and forgiving physics.
-- **Creation first:** the editor must be easy enough to use on a phone.
-- **Immediate feedback:** build a track, test it, modify it and race again without friction.
-- **Chaos with control:** obstacles and power-ups create memorable races without making the game unreadable.
-- **No pay-to-win:** future progression and monetization should not undermine competitive play.
+Modalità single-player con avversari controllati dall'IA, potenzialmente organizzata in progressione/arcade e con sistema di monete.
 
-## Planned features
+### Multiplayer
 
-- More cars and cosmetic customization
-- More track pieces, special elements and obstacles
-- Expanded power-up roster
-- Track publishing and discovery
-- Community ratings, likes and creator profiles
-- Daily tracks and challenges
-- Credits/progression system
-- Events
-- Online multiplayer (post-MVP)
+Modalità prevista in prospettiva con turni alternati. L'ordine dei giocatori rimane fisso per tutta la gara:
 
-## Technical direction
+**P1 → P2 → … → Pn → P1 → P2 → …**
 
-The current technical direction is **Unity** for iOS and Android, using modular track pieces rather than a freeform track/physics construction system.
+Ogni giocatore dispone di un tempo limitato per preparare il proprio tiro. Dopo il lancio, la biglia completa la propria traiettoria e tutte le interazioni fisiche vengono risolte prima del turno successivo.
 
-Track data should remain lightweight and deterministic: pieces have defined connection points and gameplay/collision metadata, allowing tracks to be saved, validated and eventually shared online.
+## Principi di design
 
-## Project status
+- **Fisica prima degli script:** quando possibile, il risultato deve derivare da direzione, potenza, angolo, punto d'impatto e velocità, non da risultati predefiniti.
+- **Il giocatore controlla l'impulso, non il risultato:** il rischio nasce dalla difficoltà di prevedere perfettamente le conseguenze fisiche.
+- **Ogni rischio deve avere una conseguenza fisicamente motivata:** una bocciata può danneggiare la posizione di un avversario, ma un errore può danneggiare anche chi la esegue.
+- **Stato persistente della pista:** le biglie non vengono automaticamente riposizionate dopo ogni tiro.
+- **Semplicità:** costruire piste e giocare devono essere entrambi intuitivi.
+- **Niente casualità gratuita:** gli elementi casuali non devono sostituire la fisica o trasformare il risultato in una lotteria.
 
-**Pre-production / MVP definition**
+## Editor delle piste
 
-The repository contains the initial design foundation. The next major milestone is the first Unity prototype: car movement, camera and a minimal modular track system.
+L'editor rimane modulare e basato su pezzi predefiniti, ma viene ripensato per le biglie.
 
-## Documentation
+Possibili categorie:
 
-- [Game Design Document](docs/GDD.md)
-- [Roadmap](docs/ROADMAP.md)
+- rettilinei;
+- curve;
+- curve a S;
+- incroci;
+- biforcazioni;
+- salite e discese;
+- rampe;
+- salti;
+- ponti;
+- tunnel;
+- loop;
+- ostacoli;
+- trappole;
+- elementi mobili;
+- elementi che modificano permanentemente lo stato della pista.
+
+Le biforcazioni possono creare percorsi alternativi che si ricongiungono successivamente, con possibili differenze tra percorso sicuro e percorso più breve/rischioso.
+
+Le **barriere laterali/guardrail sono opzionali**: possono essere inserite dall'autore della pista solo in alcune sezioni. Dove non sono presenti, uscire dal tracciato può causare una caduta e il respawn.
+
+## Elementi fisici e interattivi
+
+Elementi già considerati per il progetto:
+
+- lati e sponde;
+- rampe;
+- salti;
+- superfici con proprietà fisiche differenti;
+- turbo a terra, che applica un impulso aggiuntivo quando la biglia attraversa l'area;
+- molle/pulsanti a parete o a pavimento, preferibilmente implementati come impulsi controllati;
+- loop verticali;
+- bombe/TNT come ostacoli che applicano un impulso di esplosione prevalentemente all'indietro o lateralmente;
+- blocchi mobili con movimenti semplici predefiniti;
+- pendoli con movimento predefinito;
+- barre rotanti con collider fisico;
+- buchi/trappole;
+- porte che possono chiudere un passaggio dopo il primo attraversamento;
+- ponti levatoi;
+- ponti instabili che collassano dopo il primo attraversamento.
+
+### Loop
+
+Un loop deve essere basato principalmente sulla fisica: velocità sufficiente permette di completarlo; velocità insufficiente può causare arresto in salita e ritorno all'indietro. Nel caso particolare in cui la biglia raggiunga la zona superiore, può essere usata una piccola area di controllo invisibile per rendere coerente il comportamento e permettere, se previsto dal design, la caduta sulla pista sottostante.
+
+### Ponti instabili
+
+Un ponte instabile può essere attraversato una sola volta: il primo attraversamento attiva il collasso, dopo il quale il passaggio rimane inutilizzabile. Una biglia che cade viene respawnata in prossimità dell'elemento ma sulla pista principale.
+
+## Trappole e respawn
+
+Le trappole possono comprendere:
+
+- buchi;
+- cadute oltre il bordo del tracciato;
+- sezioni rese inutilizzabili da elementi permanenti;
+- altre situazioni definite dalla pista.
+
+Il respawn avviene in un punto predefinito associato all'elemento o alla sezione della pista. La penalità deve essere principalmente **posizionale**, evitando tempi morti eccessivi.
+
+I **buchi nascosti/coperti sono stati scartati** come meccanica di gameplay: senza un sistema specifico di rilevamento rischiano di rendere il gioco imprevedibile anziché basato sull'abilità.
+
+## Micro-missioni e monete
+
+Per evitare che la strategia dominante sia semplicemente avanzare in sicurezza con il minor numero possibile di tiri, la modalità Classica può utilizzare micro-missioni dinamiche.
+
+Esempi:
+
+- colpire almeno due avversari in sequenza;
+- creare una catena di almeno tre collisioni;
+- mandare un avversario in una trappola;
+- colpire un avversario dopo un rimbalzo;
+- espellere una biglia dal tracciato;
+- provocare una collisione indiretta.
+
+Le missioni sono incentivi, non necessariamente obiettivi obbligatori.
+
+Ogni obiettivo può avere un valore base in monete. Il premio effettivo potrà tenere conto di difficoltà, rischio e concatenazione degli eventi, con un eventuale moltiplicatore di catena. I valori finali devono essere interi.
+
+Formula concettuale ancora da definire:
+
+`reward = base × difficulty × risk × chain_multiplier`
+
+## Power-up tradizionali
+
+I power-up tradizionali sono stati **rimossi dal concept attuale**. Il gioco non necessita di scudi, missili, teletrasporti o altri effetti attivati dal giocatore: il sistema di interazioni fisiche della pista deve essere il principale generatore di varietà.
+
+Il **turbo a terra** rimane invece un elemento ambientale della pista e non un power-up tradizionale.
+
+## Eventi ambientali
+
+Eventi casuali di area che influenzano tutti i giocatori indipendentemente dalle loro azioni, come fulmini che colpiscono casualmente la pista, sono stati rimossi come meccaniche di gameplay perché rischiano di introdurre casualità non legata alle decisioni del giocatore.
+
+Effetti simili possono eventualmente essere mantenuti come **elementi puramente estetici/atmosferici**.
+
+## Sviluppo incrementale
+
+### V1 — Fisica fondamentale
+
+- pista;
+- sponde;
+- uscita dal tracciato;
+- buchi;
+- rampe;
+- salti;
+- 1–2 tipi di superficie;
+- collisioni biglia-bigia e biglia-ambiente;
+- respawn.
+
+### V2 — Interazioni
+
+- turbo;
+- molle;
+- loop;
+- bombe;
+- blocchi mobili;
+- pendoli.
+
+### V3 — Editor e stato della pista
+
+- biforcazioni;
+- porte;
+- ponti levatoi;
+- guardrail opzionali;
+- ponti instabili;
+- combinazione libera dei moduli.
+
+### V4 — Contenuti avanzati
+
+- barre rotanti;
+- ulteriori ostacoli e trappole;
+- elementi fisici avanzati;
+- rifinitura audiovisiva.
+
+## Prototipo prioritario
+
+Prima di costruire un editor complesso, il progetto deve verificare che il nucleo sia già divertente:
+
+**trascina → mira → rilascia → la biglia colpisce qualcosa → rimbalza → colpisce un'altra biglia → osserva il risultato.**
+
+Se questa interazione non è soddisfacente, aggiungere numerosi elementi di pista non risolverà il problema.
+
+## Tecnologie
+
+- Unity 6.3 LTS.
+- Target iniziale: mobile.
+- Architettura basata su moduli di pista e dati leggeri, con possibilità futura di salvataggio e condivisione delle piste.
+
+## Stato del progetto
+
+**Pre-produzione — concept in evoluzione.**
+
+Il nome definitivo del gioco non è ancora stato scelto. `RaceMaker` rimane il nome tecnico provvisorio del repository e del progetto.
+
+Il prossimo obiettivo è validare il nucleo fisico prima di investire nello sviluppo completo dell'editor.
