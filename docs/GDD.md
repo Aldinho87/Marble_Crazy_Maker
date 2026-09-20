@@ -1,8 +1,8 @@
-# RaceMaker — Game Design Document
+# Marble Crazy Maker — Game Design Document
 
 **Status:** Pre-production / concept in evolution  
 **Version:** 0.4  
-**Titolo definitivo:** da definire
+**Titolo:** Marble Crazy Maker
 
 ## 1. Vision
 
@@ -10,7 +10,7 @@ RaceMaker è un mobile game basato sulla costruzione di piste modulari per bigli
 
 Il giocatore costruisce una pista, prepara il tiro della propria biglia tramite direzione e potenza, quindi lascia che la fisica determini il risultato. Collisioni tra biglie, sponde, ostacoli, salti, trappole e altri elementi modificano la situazione di gioco.
 
-Il precedente concept basato sulle automobili è stato abbandonato. Il nome `RaceMaker` resta provvisorio esclusivamente come nome tecnico del progetto/repository.
+Il precedente concept basato sulle automobili è stato abbandonato. `RaceMaker` resta il nome tecnico storico del repository/progetto.
 
 ### Core loop
 
@@ -402,7 +402,7 @@ Se questo non è soddisfacente, aggiungere contenuti non risolverà il problema.
 
 Decisioni ancora aperte:
 
-- nome definitivo;
+
 - visual style e prospettiva/presentazione definitiva;
 - numero e dimensioni dei moduli iniziali;
 - catalogo definitivo dei TrackPiece ridotti;
@@ -417,4 +417,4 @@ Decisioni ancora aperte:
 - struttura della modalità Classica;
 - criteri di validazione delle piste.
 
-Il nome `RaceMaker` non rappresenta quindi necessariamente il titolo finale del gioco.
+`RaceMaker` resta il nome tecnico storico del repository; il titolo di riferimento del gioco è **Marble Crazy Maker**.
