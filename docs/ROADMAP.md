@@ -22,6 +22,11 @@
 - [x] Scartare eventi ambientali casuali come meccaniche di gameplay
 - [x] Definire concept di micro-missioni e monete
 - [x] Definire sviluppo incrementale del prototipo
+- [x] Definire griglia di costruzione 4 × 4 Unity sul piano X/Z
+- [x] Definire livelli Y discreti da −2 a +2, con passo di 2 Unity
+- [x] Definire ΔY massimo pari a 1 livello tra celle direttamente collegate
+- [x] Definire catalogo base: rettilineo, curva 90°, biforcazione 1→2, incrocio +, ponte e loop
+- [x] Definire Prova come verifica di giocabilità entro un limite di tiri
 
 ## Phase 1 — Prototipo fisico fondamentale
 
@@ -77,15 +82,27 @@
 
 ### Editor base
 
+- [ ] Definire sistema di griglia 3D X/Y/Z
+- [ ] Definire dimensione cella X/Z = 4 × 4 Unity
+- [ ] Definire passo verticale Y = 2 Unity
+- [ ] Definire limiti Y iniziali = −2…+2
+- [ ] Definire regola di collegamento |ΔY| ≤ 1
+- [ ] Definire TrackPiece e ConnectionPoint
 - [ ] Definire sistema di moduli e punti di connessione
 - [ ] Implementare rettilinei
 - [ ] Implementare curve
 - [ ] Implementare curve a S
 - [ ] Implementare raccordi
 - [ ] Implementare start/finish
-- [ ] Implementare placement e rotazione
+- [ ] Implementare placement e rotazione a 90°
+- [ ] Implementare snap tra ConnectionPoint compatibili
+- [ ] Implementare raccordo automatico per ΔY = ±1
+- [ ] Implementare validazione dello spazio verticale e delle collisioni
+- [ ] Implementare ponte (3 celle, Y iniziale +1)
+- [ ] Implementare loop (3 celle, Y iniziale +2)
 - [ ] Implementare validazione della pista
-- [ ] Implementare modalità Test
+- [ ] Implementare modalità Prova
+- [ ] Implementare verifica completamento entro limite di tiri
 - [ ] Implementare salvataggio/caricamento locale
 
 ### Editor avanzato
