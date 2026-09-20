@@ -68,25 +68,27 @@ L'editor è basato su una **griglia discreta tridimensionale**: X e Z definiscon
 
 La pista standard occupa l'intera larghezza della cella:
 
-- superficie percorribile: **3,6 Unity**;
-- guard-rail: **0,2 Unity per lato**;
-- larghezza complessiva: **4 Unity**.
+- superficie percorribile: **2,8 Unity**;
+- guard-rail: **0,1 Unity per lato**;
+- larghezza complessiva: **3 Unity**, con 0,5 Unity di spazio residuo per lato nella cella.
 
-I TrackPiece ridotti mantengono invece la stessa dimensione del prefab/cella **4 × 4 Unity**, ma la superficie della pista è dimezzata e centrata nella cella:
+I TrackPiece ridotti mantengono invece la stessa dimensione del prefab/cella **4 × 4 Unity**, ma la superficie della pista è più stretta e centrata nella cella:
 
 - superficie percorribile: **1,8 Unity**;
 - guard-rail: **0,1 Unity per lato**;
 - larghezza complessiva della pista: **2 Unity**.
 
-Lo spazio laterale residuo nella cella può rimanere vuoto oppure essere utilizzato per prefab decorativi e altri elementi della pista. Lo sfondo/superficie di riempimento non è ancora definito.
+Lo spazio laterale residuo nella cella viene riempito di default in funzione della natura della pista (per esempio asfalto, erba, sabbia, ecc.). Potrà inoltre essere utilizzato per elementi decorativi, la cui modalità di placement sarà definita successivamente.
 
 Questa soluzione evita una seconda griglia di celle ridotte e mantiene uniforme la logica di placement: la cella resta sempre 4 × 4 Unity.
 
-I pezzi ridotti e gli eventuali **adattatori di larghezza** sono categorie distinte dal catalogo standard e devono essere definiti nel dettaglio prima dell'implementazione definitiva.
+Gli eventuali **adattatori di larghezza** sono una categoria distinta dal catalogo standard. È previsto un unico adapter **2,8 ↔ 1,8**, riutilizzabile tramite rotazione del TrackPiece.
 
 ### Sistema di connessione
 
 Le connessioni sono cardinali: **N, E, S, W**. I TrackPiece ruotano di 90°.
+
+Ogni ConnectionPoint è definito tramite **posizione e orientamento locali rispetto al TrackPiece**. Quando il TrackPiece ruota, posizione e orientamento dei ConnectionPoint ruotano con esso. L'orientamento non è quindi assoluto nel mondo.
 
 Catalogo base:
 - **rettilineo:** 1 cella;
@@ -98,6 +100,12 @@ Catalogo base:
 - **loop:** 3 celle, Y iniziale +2.
 
 Non servono prefab separati per ogni variante di salita/discesa: la quota delle celle determina il raccordo.
+
+### ConnectionPoint e adattatore di larghezza
+
+I ConnectionPoint sono posizionati al **centro dei lati della cella** e seguono la trasformazione del TrackPiece. La larghezza della pista non modifica la posizione del ConnectionPoint.
+
+L'adapter tra pista standard e ridotta utilizza un unico prefab con due ConnectionPoint compatibili rispettivamente con **2,8** e **1,8 Unity**. Ruotandolo di 180° lo stesso prefab può collegare la pista ridotta a quella standard nel verso opposto, senza creare un secondo adapter.
 
 ### Raccordo verticale automatico
 
