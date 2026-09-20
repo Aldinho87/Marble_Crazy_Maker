@@ -23,6 +23,10 @@
 - [x] Definire concept di micro-missioni e monete
 - [x] Definire sviluppo incrementale del prototipo
 - [x] Definire griglia di costruzione 4 × 4 Unity sul piano X/Z
+- [x] Definire la Cella come spazio di costruzione distinto dal TrackPiece
+- [x] Definire il centro della cella come riferimento per coordinate e placement
+- [x] Definire TrackPiece ridotti con prefab/cella 4 × 4 Unity e pista dimezzata, centrata nella cella
+- [x] Definire proporzioni della pista standard (3,6 + 0,2 + 0,2) e ridotta (1,8 + 0,1 + 0,1)
 - [x] Definire livelli Y discreti da −2 a +2, con passo di 2 Unity
 - [x] Definire ΔY massimo pari a 1 livello tra celle direttamente collegate
 - [x] Definire catalogo base: rettilineo, curva 90°, biforcazione 1→2, incrocio +, ponte e loop
@@ -88,6 +92,10 @@
 - [ ] Definire limiti Y iniziali = −2…+2
 - [ ] Definire regola di collegamento |ΔY| ≤ 1
 - [ ] Definire TrackPiece e ConnectionPoint
+- [ ] Definire catalogo dei TrackPiece ridotti
+- [ ] Definire geometria e occupazione degli adattatori tra pista standard e ridotta
+- [ ] Definire comportamento dello spazio laterale libero nei TrackPiece ridotti
+- [ ] Definire sistema di sfondo/riempimento della pista
 - [ ] Definire sistema di moduli e punti di connessione
 - [ ] Implementare rettilinei
 - [ ] Implementare curve
