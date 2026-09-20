@@ -57,10 +57,32 @@ L'editor è basato su una **griglia discreta tridimensionale**: X e Z definiscon
 ### Griglia di costruzione
 
 - **1 cella = 4 × 4 Unity** sul piano X/Z.
+- Le coordinate della cella sono riferite al **centro della cella**, scelta adottata per semplificare placement, rotazione e snap.
+- La cella rimane sempre 4 × 4 Unity anche quando contiene un TrackPiece ridotto: in questo caso è la **geometria della pista** a essere ridotta, non la dimensione della cella.
 - La dimensione X/Z della cella e il passo verticale Y sono indipendenti.
 - **1 livello Y = 2 Unity** di altezza.
 - Livelli disponibili inizialmente: **Y = −2, −1, 0, +1, +2**.
 - Il dislivello tra due celle direttamente collegate non può superare **1 livello Y**.
+
+### Larghezza della pista e TrackPiece ridotti
+
+La pista standard occupa l'intera larghezza della cella:
+
+- superficie percorribile: **3,6 Unity**;
+- guard-rail: **0,2 Unity per lato**;
+- larghezza complessiva: **4 Unity**.
+
+I TrackPiece ridotti mantengono invece la stessa dimensione del prefab/cella **4 × 4 Unity**, ma la superficie della pista è dimezzata e centrata nella cella:
+
+- superficie percorribile: **1,8 Unity**;
+- guard-rail: **0,1 Unity per lato**;
+- larghezza complessiva della pista: **2 Unity**.
+
+Lo spazio laterale residuo nella cella può rimanere vuoto oppure essere utilizzato per prefab decorativi e altri elementi della pista. Lo sfondo/superficie di riempimento non è ancora definito.
+
+Questa soluzione evita una seconda griglia di celle ridotte e mantiene uniforme la logica di placement: la cella resta sempre 4 × 4 Unity.
+
+I pezzi ridotti e gli eventuali **adattatori di larghezza** sono categorie distinte dal catalogo standard e devono essere definiti nel dettaglio prima dell'implementazione definitiva.
 
 ### Sistema di connessione
 
@@ -68,6 +90,7 @@ Le connessioni sono cardinali: **N, E, S, W**. I TrackPiece ruotano di 90°.
 
 Catalogo base:
 - **rettilineo:** 1 cella;
+- **varianti ridotte:** TrackPiece 4 × 4 Unity con pista larga la metà, centrata nella cella;
 - **curva 90°:** 1 cella;
 - **biforcazione:** 1 cella, 1 ingresso + 2 uscite;
 - **incrocio +:** 1 cella;
