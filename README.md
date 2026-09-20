@@ -52,6 +52,43 @@ Ogni giocatore dispone di un tempo limitato per preparare il proprio tiro. Dopo 
 
 ## Editor delle piste
 
+L'editor è basato su una **griglia discreta tridimensionale**: X e Z definiscono la posizione sul piano, mentre Y definisce un livello di altezza discreto.
+
+### Griglia di costruzione
+
+- **1 cella = 4 × 4 Unity** sul piano X/Z.
+- La dimensione X/Z della cella e il passo verticale Y sono indipendenti.
+- **1 livello Y = 2 Unity** di altezza.
+- Livelli disponibili inizialmente: **Y = −2, −1, 0, +1, +2**.
+- Il dislivello tra due celle direttamente collegate non può superare **1 livello Y**.
+
+### Sistema di connessione
+
+Le connessioni sono cardinali: **N, E, S, W**. I TrackPiece ruotano di 90°.
+
+Catalogo base:
+- **rettilineo:** 1 cella;
+- **curva 90°:** 1 cella;
+- **biforcazione:** 1 cella, 1 ingresso + 2 uscite;
+- **incrocio +:** 1 cella;
+- **ponte:** 3 celle, Y iniziale +1;
+- **loop:** 3 celle, Y iniziale +2.
+
+Non servono prefab separati per ogni variante di salita/discesa: la quota delle celle determina il raccordo.
+
+### Raccordo verticale automatico
+
+- **ΔY = 0** → collegamento piano;
+- **ΔY = +1** → salita;
+- **ΔY = −1** → discesa;
+- **|ΔY| > 1** → collegamento non valido.
+
+Con cella da 4 Unity e passo Y da 2 Unity, un dislivello di un livello corrisponde a 2 Unity verticali su 4 Unity orizzontali. Il valore dovrà essere verificato nel prototipo.
+
+### Vincoli di costruzione
+
+Il sistema dovrà validare compatibilità delle connessioni, ΔY, occupazione 3D, spazio verticale libero, collisioni e vincoli specifici di ponte/loop. I parametri devono restare configurabili.
+
 L'editor rimane modulare e basato su pezzi predefiniti, ma viene ripensato per le biglie.
 
 Possibili categorie:
@@ -75,6 +112,14 @@ Possibili categorie:
 Le biforcazioni possono creare percorsi alternativi che si ricongiungono successivamente, con possibili differenze tra percorso sicuro e percorso più breve/rischioso.
 
 Le **barriere laterali/guardrail sono opzionali**: possono essere inserite dall'autore della pista solo in alcune sezioni. Dove non sono presenti, uscire dal tracciato può causare una caduta e il respawn.
+
+## Prova e pubblicazione delle piste
+
+La modalità **Prova** deve distinguere tra validità tecnica e verifica di giocabilità. Il creator deve riuscire a completare la pista entro un limite di tiri stabilito prima che possa essere candidata alla pubblicazione.
+
+Pipeline concettuale: **CREATE → TEST → VERIFY → PUBLISH**.
+
+La verifica dimostra che la pista è fisicamente completabile; il divertimento/qualità possono essere valutati successivamente attraverso l'esperienza dei giocatori.
 
 ## Elementi fisici e interattivi
 
