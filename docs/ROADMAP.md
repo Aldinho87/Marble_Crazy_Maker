@@ -1,9 +1,9 @@
-# RaceMaker — Roadmap
+# Marble Crazy Maker — Roadmap
 
 **Status:** Pre-produzione  
-**Titolo definitivo:** da definire
+**Titolo:** Marble Crazy Maker
 
-> `RaceMaker` è attualmente il nome tecnico provvisorio del repository/progetto. Il concept precedente basato sulle automobili è stato sostituito da un gioco di costruzione e gioco con biglie fisiche.
+> `RaceMaker` è attualmente il nome tecnico storico del repository/progetto. Il concept precedente basato sulle automobili è stato sostituito da un gioco di costruzione e gioco con biglie fisiche.
 
 ## Phase 0 — Fondazione del concept
 
@@ -34,6 +34,7 @@
 - [x] Definire un unico adapter 2,8 ↔ 1,8 riutilizzabile tramite rotazione
 - [x] Definire il riempimento di default dello spazio laterale in base alla natura della pista
 - [x] Definire Prova come verifica di giocabilità entro un limite di tiri
+- [x] Definire il titolo di riferimento del gioco: Marble Crazy Maker
 
 ## Phase 1 — Prototipo fisico fondamentale
 
