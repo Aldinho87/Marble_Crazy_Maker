@@ -26,10 +26,13 @@
 - [x] Definire la Cella come spazio di costruzione distinto dal TrackPiece
 - [x] Definire il centro della cella come riferimento per coordinate e placement
 - [x] Definire TrackPiece ridotti con prefab/cella 4 × 4 Unity e pista dimezzata, centrata nella cella
-- [x] Definire proporzioni della pista standard (3,6 + 0,2 + 0,2) e ridotta (1,8 + 0,1 + 0,1)
+- [x] Definire proporzioni della pista standard (2,8 + 0,1 + 0,1) e ridotta (1,8 + 0,1 + 0,1)
 - [x] Definire livelli Y discreti da −2 a +2, con passo di 2 Unity
 - [x] Definire ΔY massimo pari a 1 livello tra celle direttamente collegate
 - [x] Definire catalogo base: rettilineo, curva 90°, biforcazione 1→2, incrocio +, ponte e loop
+- [x] Definire ConnectionPoint al centro dei lati della cella con orientamento locale al TrackPiece
+- [x] Definire un unico adapter 2,8 ↔ 1,8 riutilizzabile tramite rotazione
+- [x] Definire il riempimento di default dello spazio laterale in base alla natura della pista
 - [x] Definire Prova come verifica di giocabilità entro un limite di tiri
 
 ## Phase 1 — Prototipo fisico fondamentale
@@ -93,9 +96,9 @@
 - [ ] Definire regola di collegamento |ΔY| ≤ 1
 - [ ] Definire TrackPiece e ConnectionPoint
 - [ ] Definire catalogo dei TrackPiece ridotti
-- [ ] Definire geometria e occupazione degli adattatori tra pista standard e ridotta
-- [ ] Definire comportamento dello spazio laterale libero nei TrackPiece ridotti
-- [ ] Definire sistema di sfondo/riempimento della pista
+- [x] Definire geometria concettuale dell'unico adapter 2,8 ↔ 1,8
+- [x] Definire riempimento di default dello spazio laterale in base alla natura della pista
+- [ ] Definire modalità di placement degli elementi decorativi
 - [ ] Definire sistema di moduli e punti di connessione
 - [ ] Implementare rettilinei
 - [ ] Implementare curve
