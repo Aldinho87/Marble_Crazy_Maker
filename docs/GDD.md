@@ -1,7 +1,7 @@
 # Marble Crazy Maker — Game Design Document
 
 **Status:** Pre-production / concept in evolution  
-**Version:** 0.4  
+**Version:** 0.5  
 **Titolo:** Marble Crazy Maker
 
 ## 1. Vision
@@ -28,7 +28,7 @@ Il gesto fondamentale è:
 4. scegliere la potenza tramite la distanza del trascinamento;
 5. rilasciare.
 
-La potenza è compresa tra un minimo e un massimo. Dopo il rilascio il giocatore non controlla direttamente la biglia.
+La potenza è compresa tra un minimo e un massimo. Il drag è libero in tutte le direzioni e la direzione del lancio è opposta al vettore del drag. La distanza massima del drag è **4 Unity**, cioè una Cella di costruzione; oltre tale distanza la potenza rimane al massimo. Dopo il rilascio il giocatore non controlla direttamente la biglia.
 
 L'obiettivo è ottenere una sensazione simile al biliardo: il giocatore controlla il colpo, mentre il risultato emerge dalla fisica.
 
@@ -89,6 +89,16 @@ Il modello attualmente preferito è **a turni**, con ordine fisso:
 L'ordine non cambia in base alla posizione delle biglie.
 
 Il giocatore attivo dispone di un tempo limitato per preparare il tiro. Dopo il lancio, la biglia completa la propria traiettoria e tutte le interazioni fisiche vengono risolte prima del turno successivo.
+
+## 3.4 Biglie e lancio
+
+La biglia ha attualmente un **diametro massimo di 0,5 Unity**. Sono previste fino a **4 biglie per corsa**.
+
+Le diverse biglie possono avere aspetti differenti, ma nella fase attuale sono **identiche dal punto di vista fisico**: nessuna differenza di massa, velocità, attrito, rimbalzo o altre caratteristiche di gameplay viene introdotta in base all'estetica.
+
+Il sistema di lancio usa un drag libero in tutte le direzioni. Il giocatore può trascinare il dito in qualsiasi direzione rispetto alla biglia; la biglia viene lanciata nella direzione opposta. La distanza del drag determina la potenza. Il limite massimo è **4 Unity**, pari alla distanza di una Cella dalla biglia. Oltre 4 Unity il drag viene saturato alla potenza massima.
+
+La pista ridotta da **1,8 Unity** è volutamente stretta rispetto alla biglia da 0,5 Unity: le biglie non sono pensate per disporsi comodamente affiancate e la maggiore densità deve favorire collisioni e catene di collisioni.
 
 ## 4. Editor delle piste
 
