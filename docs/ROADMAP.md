@@ -11,6 +11,11 @@
 - [x] Definire il nuovo concept basato sulle biglie
 - [x] Abbandonare il precedente concept automobilistico
 - [x] Definire il gesto di lancio manuale
+- [x] Definire diametro massimo della biglia = 0,5 Unity
+- [x] Definire massimo 4 biglie per corsa
+- [x] Definire drag massimo = 4 Unity (1 Cella)
+- [x] Definire drag libero in tutte le direzioni e lancio opposto al vettore del drag
+- [x] Definire biglie differenti solo esteticamente nella fase iniziale
 - [x] Definire il principio "il giocatore controlla l'impulso, non il risultato"
 - [x] Definire collisioni concatenate e stato persistente delle biglie
 - [x] Definire modalità Prova / Classica / Multiplayer
@@ -50,9 +55,9 @@
 
 - [ ] Creare biglia fisica
 - [ ] Implementare interazione touch
-- [ ] Implementare trascinamento all'indietro
+- [ ] Implementare trascinamento all'indietro / drag libero in tutte le direzioni
 - [ ] Collegare distanza del trascinamento alla potenza
-- [ ] Definire potenza minima/massima
+- [ ] Definire potenza minima/massima (limite massimo del drag già fissato a 4 Unity)
 - [ ] Implementare orientamento del tiro
 - [ ] Implementare animazione/feedback del gesto di lancio
 - [ ] Testare feeling del lancio
