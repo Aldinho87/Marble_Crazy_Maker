@@ -1,7 +1,7 @@
 # RaceMaker — Game Design Document
 
 **Status:** Pre-production / concept in evolution  
-**Version:** 0.3  
+**Version:** 0.4  
 **Titolo definitivo:** da definire
 
 ## 1. Vision
@@ -98,23 +98,24 @@ La **Cella** è l'unità fondamentale della griglia di costruzione ed è sempre 
 
 Cella e TrackPiece non coincidono concettualmente: la cella definisce lo spazio di costruzione, mentre il TrackPiece definisce la geometria della pista contenuta in quello spazio.
 
-La pista standard occupa l'intera larghezza della cella:
+La pista standard è centrata nella cella e ha:
 
-- superficie percorribile: **3,6 Unity**;
-- guard-rail: **0,2 Unity per lato**;
-- larghezza complessiva: **4 Unity**.
+- superficie percorribile: **2,8 Unity**;
+- guard-rail: **0,1 Unity per lato**;
+- larghezza complessiva dell'ingombro con guard-rail: **3 Unity**;
+- spazio residuo nella cella: **0,5 Unity per lato**.
 
-I TrackPiece ridotti mantengono comunque un ingombro prefab/cella di **4 × 4 Unity**, ma la superficie della pista viene dimezzata e centrata nella cella:
+I TrackPiece ridotti mantengono comunque un ingombro prefab/cella di **4 × 4 Unity**, ma la superficie della pista è più stretta e centrata nella cella:
 
 - superficie percorribile: **1,8 Unity**;
 - guard-rail: **0,1 Unity per lato**;
 - larghezza complessiva: **2 Unity**.
 
-Lo spazio laterale residuo non è automaticamente parte della pista: può essere lasciato vuoto oppure ospitare prefab decorativi/altri elementi. Il sistema di sfondo o riempimento della pista rimane da definire.
+Lo spazio laterale residuo viene riempito di default in funzione della natura della pista, per esempio con asfalto, erba, sabbia o altro materiale ambientale coerente. La possibilità di aggiungere elementi decorativi rimane prevista; la modalità di placement sarà definita successivamente.
 
 Questa soluzione mantiene una sola griglia di costruzione e rende i TrackPiece ridotti una variante geometrica, non una nuova tipologia di cella.
 
-Gli eventuali **adattatori tra larghezza standard e ridotta** sono previsti come categoria separata, ma geometria, occupazione e catalogo degli adattatori restano da definire.
+Gli **adattatori tra larghezza standard e ridotta** sono una categoria separata. È previsto un unico prefab **Adapter 2,8 ↔ 1,8**, con due ConnectionPoint di compatibilità diversa, riutilizzabile tramite rotazione anche nel verso opposto.
 
 L'editor rimane basato su pezzi modulari predefiniti. L'obiettivo è consentire la costruzione di piste complesse senza trasformare l'editor in un sistema di modellazione libero.
 
@@ -137,7 +138,15 @@ Possibili moduli:
 - elementi mobili;
 - elementi che modificano permanentemente la pista.
 
-### 4.1 Biforcazioni
+### 4.1 ConnectionPoint e snapping
+
+I ConnectionPoint sono collocati al **centro dei lati della cella**. Ogni punto possiede posizione e orientamento **locali rispetto al TrackPiece**; la rotazione del TrackPiece determina automaticamente la posizione e l'orientamento del punto nello spazio di costruzione.
+
+La larghezza della pista non modifica la posizione del ConnectionPoint: sia pista standard sia pista ridotta utilizzano lo stesso riferimento centrale del lato della cella. Lo snapping deve verificare sia l'orientamento risultante sia la compatibilità del tipo di connessione.
+
+Per l'adapter 2,8 ↔ 1,8 non sono necessari due prefab distinti. Un unico prefab possiede un ConnectionPoint compatibile con 2,8 Unity e uno compatibile con 1,8 Unity; ruotandolo di 180° può svolgere la stessa funzione nel verso opposto.
+
+### 4.2 Biforcazioni
 
 Sono previste sia biforcazioni brevi sia due percorsi più distinti che si ricongiungono successivamente.
 
@@ -146,9 +155,9 @@ Le due vie possono avere caratteristiche diverse, per esempio:
 - percorso più lungo ma sicuro;
 - percorso più corto ma rischioso.
 
-### 4.2 Guardrail
+### 4.3 Guardrail
 
-Le barriere laterali/guard-rail sono opzionali in funzione della sezione della pista. Quando presenti, la dimensione standard è 0,2 Unity per lato; nei TrackPiece ridotti è proporzionalmente 0,1 Unity per lato. Possono essere inserite solo in alcune sezioni della pista.
+Le barriere laterali/guard-rail sono opzionali in funzione della sezione della pista. Quando presenti, la dimensione è **0,1 Unity per lato** sia nei TrackPiece standard sia nei TrackPiece ridotti. Possono essere inserite solo in alcune sezioni della pista.
 
 Dove non esiste una barriera, una biglia che supera il bordo può essere considerata fuori pista e attivare il respawn.
 
