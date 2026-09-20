@@ -1,6 +1,7 @@
-# RaceMaker
+# Marble Crazy Maker
 
-**Titolo definitivo da definire.** Nome tecnico provvisorio del progetto.
+**Titolo del gioco:** Marble Crazy Maker  
+**Nome tecnico storico del repository:** RaceMaker
 
 Mobile game di costruzione e gioco su piste modulari con **biglie** e fisica interattiva. Il cuore dell'esperienza è costruire una pista, scegliere traiettoria e potenza di lancio e osservare come collisioni, ostacoli e elementi della pista modificano fisicamente la situazione di gioco.
 
@@ -283,6 +284,6 @@ Se questa interazione non è soddisfacente, aggiungere numerosi elementi di pist
 
 **Pre-produzione — concept in evoluzione.**
 
-Il nome definitivo del gioco non è ancora stato scelto. `RaceMaker` rimane il nome tecnico provvisorio del repository e del progetto.
+Il titolo di riferimento del gioco è ora **Marble Crazy Maker**. `RaceMaker` rimane il nome tecnico storico del repository e del progetto.
 
 Il prossimo obiettivo è validare il nucleo fisico prima di investire nello sviluppo completo dell'editor.
