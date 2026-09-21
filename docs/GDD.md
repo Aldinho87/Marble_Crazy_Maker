@@ -1,7 +1,7 @@
 # Marble Crazy Maker — Game Design Document
 
 **Status:** Pre-production / concept in evolution  
-**Version:** 0.5  
+**Version:** 0.6  
 **Titolo:** Marble Crazy Maker
 
 ## 1. Vision
@@ -147,6 +147,15 @@ Possibili moduli:
 - trappole;
 - elementi mobili;
 - elementi che modificano permanentemente la pista.
+
+
+### 4.0.1 Stato tecnico attuale dell'editor
+
+Il progetto Unity dispone già di una prima infrastruttura tecnica per l'editor delle piste. La scena usa attualmente una griglia di **20 × 20 celle sul piano X/Z**. Questa dimensione della griglia viene mantenuta come base; la specifica di costruzione prevede che ogni cella passi da 1 Unity a **4 × 4 Unity** sul piano X/Z.
+
+Nella cartella `Assets/Scripts` sono già presenti i componenti `TrackPiece`, `ConnectionPoint`, `GridManager` e `GridSnap`. Nella cartella `Assets/Editor` sono presenti `GridMoveTool` e `GridSnapEditor`. Questi script costituiscono una **prima implementazione sperimentale** e dovranno essere adattati alle specifiche definitive della griglia 4 × 4, dei livelli Y discreti e dello snapping tramite ConnectionPoint; non costituiscono ancora l'implementazione definitiva dell'editor.
+
+Il progetto Unity è attualmente in **3D** e usa `Active Input Handling = Both`. Il nuovo codice di gameplay e input touch dovrà utilizzare il **nuovo Input System**; il vecchio Input Manager non verrà usato per le nuove funzionalità.
 
 ### 4.1 ConnectionPoint e snapping
 
