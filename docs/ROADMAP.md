@@ -45,11 +45,11 @@
 
 ### Setup
 
-- [ ] Creare/configurare progetto Unity 6.3 LTS
-- [ ] Configurare target mobile
-- [ ] Stabilire struttura delle cartelle
-- [ ] Configurare input touch
-- [ ] Creare scena di test
+- [x] Creare/configurare progetto Unity 6.3 LTS
+- [x] Configurare target mobile
+- [x] Stabilire struttura delle cartelle (`Assets/Scripts`, `Editor`, `Materials`, `Prefabs`, `Scenes`)
+- [x] Configurare Input Handling del progetto (`Both`); il nuovo gameplay userà il nuovo Input System
+- [ ] Creare scena di test dedicata alla biglia
 
 ### Biglia e lancio
 
@@ -95,24 +95,24 @@
 
 ### Editor base
 
-- [ ] Definire sistema di griglia 3D X/Y/Z
+- [ ] Evolvere il sistema di griglia esistente 20 × 20 X/Z verso la griglia 3D X/Y/Z
 - [ ] Definire dimensione cella X/Z = 4 × 4 Unity
 - [ ] Definire passo verticale Y = 2 Unity
 - [ ] Definire limiti Y iniziali = −2…+2
 - [ ] Definire regola di collegamento |ΔY| ≤ 1
-- [ ] Definire TrackPiece e ConnectionPoint
+- [x] Creare prima versione tecnica di `TrackPiece` e `ConnectionPoint`
 - [ ] Definire catalogo dei TrackPiece ridotti
 - [x] Definire geometria concettuale dell'unico adapter 2,8 ↔ 1,8
 - [x] Definire riempimento di default dello spazio laterale in base alla natura della pista
 - [ ] Definire modalità di placement degli elementi decorativi
-- [ ] Definire sistema di moduli e punti di connessione
+- [x] Creare prima versione tecnica del sistema di moduli e punti di connessione
 - [ ] Implementare rettilinei
 - [ ] Implementare curve
 - [ ] Implementare curve a S
 - [ ] Implementare raccordi
 - [ ] Implementare start/finish
-- [ ] Implementare placement e rotazione a 90°
-- [ ] Implementare snap tra ConnectionPoint compatibili
+- [ ] Implementare placement e rotazione a 90° nella versione definitiva dell'editor
+- [ ] Evolvere lo snap esistente verso ConnectionPoint compatibili
 - [ ] Implementare raccordo automatico per ΔY = ±1
 - [ ] Implementare validazione dello spazio verticale e delle collisioni
 - [ ] Implementare ponte (3 celle, Y iniziale +1)
@@ -177,6 +177,10 @@
 - [ ] Test di usabilità
 
 ## Milestone principali
+
+### Stato tecnico corrente
+
+È già presente una prima infrastruttura Unity per l'editor della pista: griglia 20 × 20 X/Z, `TrackPiece`, `ConnectionPoint`, `GridManager`, `GridSnap` e relativi strumenti Editor. La prima implementazione è sperimentale e va riallineata alle specifiche definitive prima di costruire l'editor completo.
 
 ### Milestone A — Fun Physics
 
