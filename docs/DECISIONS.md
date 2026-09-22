@@ -55,3 +55,40 @@ Online multiplayer is intentionally postponed until the creation-and-racing loop
 Future monetization should favor cosmetics and convenience and should not compromise competitive fairness.
 
 **Status:** Guiding principle
+
+
+## D010 — Griglia di costruzione 4 × 4 Unity
+
+La Cella di costruzione è fissata a 4 × 4 Unity sul piano X/Z. La cella è distinta dal TrackPiece e lascia spazio interno per ostacoli, trappole ed elementi ambientali.
+
+**Status:** Accepted
+
+## D011 — Livelli Y discreti
+
+L'editor usa inizialmente cinque livelli di costruzione: −2, −1, 0, +1, +2. Un livello corrisponde a 2 Unity verticali.
+
+**Status:** Accepted
+
+## D012 — Regola di connessione verticale
+
+Due ConnectionPoint possono rimanere collegati solo con stesso tipo di connessione, allineamento X/Z e differenza massima di un livello Y. ΔY = 0 è piano; ΔY = ±1 è un dislivello valido; ΔY = ±2 è invalido.
+
+**Status:** Accepted
+
+## D013 — Selettore Y nell'editor
+
+L'editor dispone di cinque pulsanti UI per selezionare il livello attivo. Il cambio del livello attivo modifica la griglia di costruzione visualizzata ma non sposta automaticamente i TrackPiece già presenti.
+
+**Status:** Accepted
+
+## D014 — UI separata dal mondo 3D
+
+Il selettore Y usa una UI Screen Space - Overlay. La futura camera dell'editor può quindi effettuare zoom, pan e orbit sulla scena 3D senza modificare posizione e dimensioni della UI.
+
+**Status:** Accepted
+
+## D015 — Controllo dello spostamento verticale
+
+Se un TrackPiece già collegato viene spostato, lo spostamento verticale viene bloccato quando porterebbe una connessione oltre ΔY = 1. Se viene perso l'allineamento X/Z, la connessione viene rimossa automaticamente.
+
+**Status:** Accepted
