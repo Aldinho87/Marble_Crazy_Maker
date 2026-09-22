@@ -95,25 +95,28 @@
 
 ### Editor base
 
-- [ ] Evolvere il sistema di griglia esistente 20 × 20 X/Z verso la griglia 3D X/Y/Z
-- [ ] Definire dimensione cella X/Z = 4 × 4 Unity
-- [ ] Definire passo verticale Y = 2 Unity
-- [ ] Definire limiti Y iniziali = −2…+2
-- [ ] Definire regola di collegamento |ΔY| ≤ 1
+- [x] Evolvere il sistema di griglia esistente verso la griglia 3D X/Y/Z
+- [x] Definire dimensione cella X/Z = 4 × 4 Unity
+- [x] Definire passo verticale Y = 2 Unity
+- [x] Definire limiti Y iniziali = −2…+2
+- [x] Definire regola di collegamento |ΔY| ≤ 1
 - [x] Creare prima versione tecnica di `TrackPiece` e `ConnectionPoint`
 - [ ] Definire catalogo dei TrackPiece ridotti
 - [x] Definire geometria concettuale dell'unico adapter 2,8 ↔ 1,8
 - [x] Definire riempimento di default dello spazio laterale in base alla natura della pista
 - [ ] Definire modalità di placement degli elementi decorativi
 - [x] Creare prima versione tecnica del sistema di moduli e punti di connessione
-- [ ] Implementare rettilinei
+- [x] Implementare griglia multilivello e selettore Y dell'editor
+- [x] Implementare validazione base delle connessioni verticali e blocco di ΔY > 1
+- [x] Implementare rettilinei di test e snap tramite ConnectionPoint
 - [ ] Implementare curve
 - [ ] Implementare curve a S
 - [ ] Implementare raccordi
 - [ ] Implementare start/finish
 - [ ] Implementare placement e rotazione a 90° nella versione definitiva dell'editor
-- [ ] Evolvere lo snap esistente verso ConnectionPoint compatibili
-- [ ] Implementare raccordo automatico per ΔY = ±1
+- [x] Evolvere lo snap esistente verso ConnectionPoint compatibili
+- [x] Implementare mantenimento delle connessioni per ΔY = 0/±1 e disconnessione automatica quando la validità viene persa
+- [ ] Implementare raccordo geometrico automatico per ΔY = ±1
 - [ ] Implementare validazione dello spazio verticale e delle collisioni
 - [ ] Implementare ponte (3 celle, Y iniziale +1)
 - [ ] Implementare loop (3 celle, Y iniziale +2)
@@ -180,7 +183,11 @@
 
 ### Stato tecnico corrente
 
-È già presente una prima infrastruttura Unity per l'editor della pista: griglia 20 × 20 X/Z, `TrackPiece`, `ConnectionPoint`, `GridManager`, `GridSnap` e relativi strumenti Editor. La prima implementazione è sperimentale e va riallineata alle specifiche definitive prima di costruire l'editor completo.
+È presente una prima infrastruttura Unity funzionante per l'editor della pista: griglia 20 × 20 X/Z, cella 4 × 4 Unity, cinque livelli Y da −2 a +2 con passo di 2 Unity, `TrackPiece`, `ConnectionPoint`, `GridManager`, `GridSnap`, `GridMoveTool`, `GridSnapEditor` e `YLevelSelector`.
+
+Il selettore Y è già testato in Play Mode: i pulsanti cambiano il livello attivo mentre la griglia viene visualizzata nella Scene View. I TrackPiece esistenti non vengono spostati dal cambio del livello attivo. La UI dell'editor è predisposta per rimanere fissa sullo schermo mentre la futura camera gestirà zoom, pan e orbit della scena.
+
+Prossimi passi tecnici dell'editor: selezione/spostamento dei TrackPiece tramite il selettore Y, placement dei nuovi moduli sul livello attivo, camera touch e successivamente validazione completa della pista.
 
 ### Milestone A — Fun Physics
 
