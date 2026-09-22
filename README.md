@@ -51,6 +51,25 @@ Ogni giocatore dispone di un tempo limitato per preparare il proprio tiro. Dopo 
 - **Semplicità:** costruire piste e giocare devono essere entrambi intuitivi.
 - **Niente casualità gratuita:** gli elementi casuali non devono sostituire la fisica o trasformare il risultato in una lotteria.
 
+## Stato tecnico attuale dell'editor
+
+La prima infrastruttura Unity dell'editor è stata aggiornata e verificata:
+
+- griglia **20 × 20 celle** sul piano X/Z;
+- **1 cella = 4 × 4 Unity**;
+- cinque livelli Y: **−2, −1, 0, +1, +2**;
+- passo verticale: **2 Unity**;
+- livello attivo selezionabile tramite `YLevelSelector`;
+- livelli adiacenti visualizzati nella Scene View con trasparenza ridotta;
+- connessioni tra ConnectionPoint valide per ΔY = 0/±1;
+- blocco dello spostamento che porterebbe una connessione a ΔY > 1;
+- disconnessione automatica quando viene perso l'allineamento X/Z;
+- UI laterale in Screen Space - Overlay, indipendente dalla futura camera dell'editor.
+
+I relativi script sono versionati nel repository sotto `Assets/MarbleRaceMaker/Scripts` e `Assets/MarbleRaceMaker/Editor`.
+
+Il prossimo sviluppo dell'editor riguarda selezione/spostamento dei TrackPiece, placement mobile, camera touch e validazione completa della pista.
+
 ## Editor delle piste
 
 L'editor è basato su una **griglia discreta tridimensionale**: X e Z definiscono la posizione sul piano, mentre Y definisce un livello di altezza discreto.
@@ -286,4 +305,4 @@ Se questa interazione non è soddisfacente, aggiungere numerosi elementi di pist
 
 Il titolo di riferimento del gioco è ora **Marble Crazy Maker**. `RaceMaker` rimane il nome tecnico storico del repository e del progetto.
 
-Il prossimo obiettivo è validare il nucleo fisico prima di investire nello sviluppo completo dell'editor.
+Il prossimo obiettivo tecnico immediato è completare il placement dell'editor e la camera touch, mantenendo separata la successiva validazione completa della pista dal semplice posizionamento dei moduli.
