@@ -1,7 +1,7 @@
 # Marble Crazy Maker — Game Design Document
 
 **Status:** Pre-production / concept in evolution  
-**Version:** 0.6  
+**Version:** 0.7  
 **Titolo:** Marble Crazy Maker
 
 ## 1. Vision
@@ -151,11 +151,25 @@ Possibili moduli:
 
 ### 4.0.1 Stato tecnico attuale dell'editor
 
-Il progetto Unity dispone già di una prima infrastruttura tecnica per l'editor delle piste. La scena usa attualmente una griglia di **20 × 20 celle sul piano X/Z**. Questa dimensione della griglia viene mantenuta come base; la specifica di costruzione prevede che ogni cella passi da 1 Unity a **4 × 4 Unity** sul piano X/Z.
+L'infrastruttura tecnica dell'editor è ora allineata alle specifiche base della griglia 4 × 4 Unity e dei livelli Y discreti.
 
-Nella cartella `Assets/Scripts` sono già presenti i componenti `TrackPiece`, `ConnectionPoint`, `GridManager` e `GridSnap`. Nella cartella `Assets/Editor` sono presenti `GridMoveTool` e `GridSnapEditor`. Questi script costituiscono una **prima implementazione sperimentale** e dovranno essere adattati alle specifiche definitive della griglia 4 × 4, dei livelli Y discreti e dello snapping tramite ConnectionPoint; non costituiscono ancora l'implementazione definitiva dell'editor.
+La scena Unity usa attualmente una griglia di **20 × 20 celle sul piano X/Z**, con **1 cella = 4 × 4 Unity** e passo verticale **Y = 2 Unity**. I livelli disponibili sono **−2, −1, 0, +1, +2**.
 
-Il progetto Unity è attualmente in **3D** e usa `Active Input Handling = Both`. Il nuovo codice di gameplay e input touch dovrà utilizzare il **nuovo Input System**; il vecchio Input Manager non verrà usato per le nuove funzionalità.
+Il sistema tecnico attuale comprende:
+
+- `TrackPiece`;
+- `ConnectionPoint`;
+- `GridManager`;
+- `GridSnap`;
+- `GridMoveTool`;
+- `GridSnapEditor`;
+- `YLevelSelector`.
+
+`GridManager` disegna nella Scene View il livello Y attivo e i due livelli adiacenti con trasparenza ridotta. Il livello attivo è selezionabile nell'Inspector e, tramite `YLevelSelector`, anche attraverso una UI laterale composta da cinque pulsanti Legacy UI. La UI usa un Canvas in **Screen Space - Overlay**, con Canvas Scaler **Scale With Screen Size** e riferimento 1920 × 1080; il pannello rimane quindi fisso rispetto allo schermo mentre la futura camera dell'editor farà zoom/pan/orbit sulla scena 3D.
+
+Il sistema di connessione è già testato su due rettilinei standard. Le connessioni compatibili richiedono stesso tipo di ConnectionPoint e un dislivello massimo di un livello. Una connessione esistente viene mantenuta tra livelli adiacenti e rimossa automaticamente quando l'allineamento X/Z viene perso o il dislivello supera un livello. `GridMoveTool` blocca lo spostamento verticale che porterebbe una connessione esistente a ΔY = ±2 livelli o oltre.
+
+Questa infrastruttura è ancora una **base tecnica dell'editor**, non il sistema definitivo di placement mobile, selezione touch o camera.
 
 ### 4.1 ConnectionPoint e snapping
 
